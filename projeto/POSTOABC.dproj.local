@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/12/28 23:51:40.000.187,=C:\Users\leona.LAPTOP-57JR0PV1\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/12/28 23:57:08.000.552,C:\DEV\Delphi\POSTO_ABC\projeto\view\UPrincipal.pas=C:\Users\leona.LAPTOP-57JR0PV1\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/12/28 23:57:08.000.552,C:\DEV\Delphi\POSTO_ABC\projeto\view\UPrincipal.dfm=C:\Users\leona.LAPTOP-57JR0PV1\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2022/12/28 23:57:41.000.359,C:\DEV\Delphi\POSTO_ABC\projeto\POSTOABC.dproj=C:\Users\leona.LAPTOP-57JR0PV1\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2022/12/29 00:37:21.000.963,=C:\DEV\Delphi\POSTO_ABC\projeto\Unit1.pas</Transaction>
+    <Transaction>2022/12/29 00:37:58.000.792,C:\DEV\Delphi\POSTO_ABC\projeto\utils\uUtilits.pas=C:\DEV\Delphi\POSTO_ABC\projeto\Unit1.pas</Transaction>
+    <Transaction>2022/12/29 01:13:59.000.544,=C:\DEV\Delphi\POSTO_ABC\projeto\Unit1.pas</Transaction>
+    <Transaction>2022/12/29 01:15:10.000.607,C:\DEV\Delphi\POSTO_ABC\projeto\Unit1.dfm=C:\DEV\Delphi\POSTO_ABC\projeto\controller\UDM.dfm</Transaction>
+    <Transaction>2022/12/29 01:15:10.000.607,C:\DEV\Delphi\POSTO_ABC\projeto\Unit1.pas=C:\DEV\Delphi\POSTO_ABC\projeto\controller\UDM.pas</Transaction>
+  </Transactions>
+</BorlandProject>

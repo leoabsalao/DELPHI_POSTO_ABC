@@ -1,0 +1,19 @@
+object DMConex: TDMConex
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 451
+  Width = 657
+  object FDConex: TFDConnection
+    Left = 392
+    Top = 40
+  end
+  object FDQuery: TFDQuery
+    Connection = FDConex
+    Left = 392
+    Top = 104
+  end
+  object Ds: TDataSource
+    Left = 392
+    Top = 168
+  end
+end

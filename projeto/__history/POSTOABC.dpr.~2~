@@ -1,0 +1,15 @@
+program POSTOABC;
+
+uses
+  Vcl.Forms,
+  UPrincipal in 'view\UPrincipal.pas' {fPrincipal};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.Title := 'Posto ABC';
+  Application.CreateForm(TfPrincipal, fPrincipal);
+  Application.Run;
+end.
