@@ -1,12 +1,25 @@
 -- INSERIR
 CREATE OR ALTER PROCEDURE SP_ABASTECIMENTO_INSERT (
-    P_COD_BOMBA INTEGER,
-    P_DATA_REG  DATE,
-    P_QUANT_LITROS FLOAT,
-    P_VALOR FLOAT
+    P_COD_BOMBA INTEGER,    
+    P_QUANT_LITROS FLOAT    
 )
 AS  
+   DECLARE VARIABLE V_TOTAL FLOAT; 
+   DECLARE VARIABLE V_DATA_REG TIMESTAMP; 
+  
 BEGIN
+	      -- Através do código da bomba, busca os dados necessários p/ o cálculo final do abastecimento.	      
+	      SELECT  	           
+	             ((c.VALOR_INI + (c.VALOR_INI * (c.IMPOSTO/100))) * :P_QUANT_LITROS) AS VLR_FINAL
+              FROM BOMBA b, TANQUE t, COMBUSTIVEL c  
+            WHERE b.COD_TANQUE  = t.CODIGO AND c.CODIGO = t.COD_COMBUSTIVEL         
+            AND b.CODIGO = :P_COD_BOMBA
+	      INTO :V_TOTAL;  
+	     
+	     -- Selecionando a data atual.
+	     SELECT current_timestamp as "DATA_REG"
+           FROM  rdb$database
+         INTO :V_DATA_REG;
 	
 	      INSERT INTO ABASTECIMENTO (
 	       					 COD_BOMBA,		
@@ -17,9 +30,9 @@ BEGIN
 	                        VALUES
 	                        (
 	                         :P_COD_BOMBA,
-	                         :P_DATA_REG,
+	                         :V_DATA_REG,
 	                         :P_QUANT_LITROS,
-	                         :P_VALOR
+	                         :V_TOTAL
 	                        );
 
 END
@@ -45,3 +58,9 @@ BEGIN
 	       EXCEPTION EXC_REGISTRO_INEXISTENTE; 
 
 END
+
+-- REALIZANDO TESTES
+EXECUTE PROCEDURE SP_ABASTECIMENTO_INSERT(4,50)
+EXECUTE PROCEDURE SP_ABASTECIMENTO_DELETE(2)
+
+SELECT * FROM ABASTECIMENTO b    
