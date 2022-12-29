@@ -38,24 +38,29 @@ uses uUtilits;
 
 procedure TDMConex.DataModuleCreate(Sender: TObject);
 begin
-  { try
+   try
+       with FDPhysFBDriverLink1 do
+       begin
+         VendorLib := LerIni('FIREBIRD', 'ArquivoDLL');
+       end;
+
        with FDConex do
        begin
           close;
           with Params do
           begin
-             Clear;
-             Values['DriverID']  := 'FB';
+             Values['DriverID']  := LerIni('FIREBIRD', 'Driver');
              Values['Server']    := LerIni('FIREBIRD', 'Server');
              Values['Database']  := LerIni('FIREBIRD', 'Database');
              Values['User_name'] := LerIni('FIREBIRD', 'User');
              Values['Password']  := LerIni('FIREBIRD', 'Password');
+             Values['Port']      := LerIni('FIREBIRD', 'Porta');
           end;
           Connected := true;
        end;
    except
       ShowMessage('Ocorreu uma Falha na configuração no Banco Firebird!');
-   end;   }
+   end;
 end;
 
 end.

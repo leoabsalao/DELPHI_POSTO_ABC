@@ -18,6 +18,7 @@ type
     Abastecimento1: TMenuItem;
     procedure Timer1Timer(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Sair1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,6 +37,12 @@ uses uUtilits;
 procedure TfPrincipal.FormShow(Sender: TObject);
 begin
    fPrincipal.Caption := 'POSTO ABC - SISTEMA DE CONTROLE DE ABASTECIMENTO ::: Versão do sistema: ' + VersaoInfo;
+end;
+
+procedure TfPrincipal.Sair1Click(Sender: TObject);
+begin
+  If  MessageDlg('Você tem certeza que deseja sair do sistema?',mtConfirmation,[mbyes,mbno],0)=mryes then
+     Application.Terminate;
 end;
 
 procedure TfPrincipal.Timer1Timer(Sender: TObject);

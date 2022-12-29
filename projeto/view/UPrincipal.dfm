@@ -46,6 +46,7 @@ object fPrincipal: TfPrincipal
       Caption = 'Sistema'
       object Sair1: TMenuItem
         Caption = 'Sair'
+        OnClick = Sair1Click
       end
     end
     object Sair2: TMenuItem

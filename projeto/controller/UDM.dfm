@@ -5,11 +5,8 @@ object DMConex: TDMConex
   Width = 657
   object FDConex: TFDConnection
     Params.Strings = (
-      'User_Name=SYSDBA'
+      'User_Name=sysdba'
       'Password=masterkey'
-      'Database=C:\DEV\Delphi\POSTO_ABC\banco\BANCO_POSTOABC.FDB'
-      'Server=localhost'
-      'CharacterSet=WIN1252'
       'DriverID=FB')
     LoginPrompt = False
     Left = 392
@@ -36,7 +33,7 @@ object DMConex: TDMConex
     Top = 40
   end
   object FDPhysFBDriverLink1: TFDPhysFBDriverLink
-    VendorLib = 'C:\DEV\Delphi\POSTO_ABC\fbclient.dll'
+    VendorLib = 'C:\WINDOWS\System\fbclient.dll'
     Left = 488
     Top = 112
   end
