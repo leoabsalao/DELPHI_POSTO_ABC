@@ -112,6 +112,11 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="model\UCombustivel.pas"/>
+        <DCCReference Include="model\UTanque.pas"/>
+        <DCCReference Include="model\UBomba.pas"/>
+        <DCCReference Include="model\UAbastecimento.pas"/>
+        <DCCReference Include="model\interface\UIModel.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

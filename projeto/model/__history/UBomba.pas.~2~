@@ -1,0 +1,18 @@
+unit UBomba;
+
+interface
+
+uses Classes, SysUtils, UIModel;
+
+type
+
+  TBomba = class(TInterfacedObject, IBomba)
+  private
+
+  public
+
+  end;
+
+implementation
+
+end.

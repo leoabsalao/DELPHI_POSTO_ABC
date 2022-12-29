@@ -1,0 +1,34 @@
+unit UCombustivel;
+
+interface
+
+uses Classes, SysUtils, UIModel;
+
+type
+
+  TCombustivel = class(TInterfacedObject, ICombustivel)
+  private
+     FCodigo: integer;
+     FDescricao: string;
+     FImposto: real;
+     FValor_Ini: real;
+  public
+     procedure SetCodigo(const value: integer);
+     procedure SetDescricao(const Value: string);
+     procedure SetImposto(const Value: real);
+     procedure SetValor_Ini(const Value: real);
+
+     function GetCodigo: integer;
+     function GetDescricao: string;
+     function GetImposto: real;
+     function GetValor_Ini: real;
+
+     property Codigo: integer read GetCodigo write SetCodigo;
+     property Descricao: string read GetDescricao write SetDescricao;
+     property Imposto: real read GetImposto write SetImposto;
+     property Valor_Ini: real read GetValor_Ini write SetValor_Ini;
+  end;
+
+implementation
+
+end.

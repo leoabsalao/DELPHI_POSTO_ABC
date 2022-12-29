@@ -1,0 +1,19 @@
+unit UBomba;
+
+interface
+  type
+
+  TBomba = class
+  private
+
+  protected
+
+  public
+
+  published
+
+  end;
+
+implementation
+
+end.

@@ -1,0 +1,63 @@
+unit UTanque;
+
+interface
+
+uses Classes, SysUtils, UIModel;
+
+type
+
+  TTanque = class(TInterfacedObject, ITanque)
+  private
+     FCodigo: integer;
+     FCod_Combustivel: integer;
+     FDescricao: string;
+
+     procedure SetCodigo(const value: integer);
+     procedure SetCod_Combustivel(const value: integer);
+     procedure SetDescricao(const value: string);
+
+     function GetCodigo: integer;
+     function GetCod_Combustivel: integer;
+     function GetDescricao: string;
+  public
+     property Codigo: integer read GetCodigo write SetCodigo;
+     property Cod_Combustivel: integer read GetCod_Combustivel write SetCod_Combustivel;
+     property Descricao: string read GetDescricao write SetDescricao;
+
+  end;
+
+implementation
+
+{ TTanque }
+
+function TTanque.GetCodigo: integer;
+begin
+    Result := FCodigo;
+end;
+
+function TTanque.GetCod_Combustivel: integer;
+begin
+
+end;
+
+function TTanque.GetDescricao: string;
+begin
+
+end;
+
+procedure TTanque.SetCodigo(const value: integer);
+begin
+
+end;
+
+procedure TTanque.SetCod_Combustivel(const value: integer);
+begin
+
+end;
+
+procedure TTanque.SetDescricao(const value: string);
+begin
+
+end;
+
+end.

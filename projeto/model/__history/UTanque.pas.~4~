@@ -1,0 +1,36 @@
+unit UTanque;
+
+interface
+
+uses Classes, SysUtils, UIModel;
+
+type
+
+  TTanque = class(TInterfacedObject, ITanque)
+  private
+     FCodigo: integer;
+     FDescricao: string;
+     FImposto: real;
+     FValor_Ini: real;
+
+     procedure SetCodigo(const value: integer);
+     procedure SetDescricao(const value: string);
+     procedure SetImposto(const value: real);
+     procedure SetValor_Ini(const value: real);
+
+     function GetCodigo: integer;
+     function GetDescricao: string;
+     function GetImposto: real;
+     function GetValor_Ini: real;
+
+  public
+     property Codigo: integer read GetCodigo write SetCodigo;
+     property Descricao: string read GetDescricao write SetDescricao;
+     property Imposto: real read GetImposto write SetImposto;
+     property Valor_Ini: real read GetValor_Ini write SetValor_Ini;
+
+  end;
+
+implementation
+
+end.

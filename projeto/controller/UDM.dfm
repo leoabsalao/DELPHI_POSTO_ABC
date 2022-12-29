@@ -33,7 +33,6 @@ object DMConex: TDMConex
     Top = 40
   end
   object FDPhysFBDriverLink1: TFDPhysFBDriverLink
-    VendorLib = 'C:\WINDOWS\System\fbclient.dll'
     Left = 488
     Top = 112
   end

@@ -1,0 +1,40 @@
+unit UAbastecimento;
+
+interface
+
+uses Classes, SysUtils, UIModel;
+
+type
+
+  TAbastecimento = class(TInterfacedObject, IAbastecimento)
+  private
+     FCodigo: integer;
+     FCod_Bomba: integer;
+     FDataReg: TDateTime;
+     FQuantLitros: real;
+     FValor: real;
+
+     procedure SetCodigo(const value: integer);
+     procedure SetCod_Bomba(const value: integer);
+     procedure SetDataReg(const value: TDateTime);
+     procedure SetQuantLitros(const value: real);
+     procedure SetValor(const value: real);
+
+     function GetCodigo: integer;
+     function GetCod_Tanque: integer;
+     function GetDataReg: TDateTime;
+     function GetQuantLitros: real;
+     function GetValor: real;
+
+  public
+     property Codigo: integer read GetCodigo write SetCodigo;
+     property Cod_Bomba: integer read GetCod_Bomba write SetCod_Bomba;
+     property DataReg: TDateTime read GetDataReg write SetDataReg;
+     property QuantLitros: real read GetQuantLitros write SetQuantLitros;
+     property Valor: real read GetValor write SetValor;
+
+  end;
+
+implementation
+
+end.
