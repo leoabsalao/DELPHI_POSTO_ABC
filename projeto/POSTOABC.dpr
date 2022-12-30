@@ -9,7 +9,8 @@ uses
   UTanque in 'model\UTanque.pas',
   UBomba in 'model\UBomba.pas',
   UAbastecimento in 'model\UAbastecimento.pas',
-  UIModel in 'model\interface\UIModel.pas';
+  UIModel in 'model\interface\UIModel.pas',
+  UTelaAbastecimento in 'view\UTelaAbastecimento.pas' {fTelaAbastecimento};
 
 {$R *.res}
 

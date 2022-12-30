@@ -3,10 +3,12 @@ unit uUtilits;
 interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, IniFiles;
+  Dialogs, StdCtrls, IniFiles, DB, ExtCtrls, DateUtils, Math, ShellApi;
 
 function VersaoInfo: String;
 function LerIni(Chave1, Chave2: String; ValorPadrao: String = ''): String;
+
+procedure abrirTelaMDI(nomeTela:TForm; nomeTelaCompl:TFormClass);
 
 
 implementation
@@ -59,6 +61,14 @@ begin
   finally
     FreeAndNil(FileIni)
   end;
+end;
+
+procedure abrirTelaMDI(nomeTela:TForm; nomeTelaCompl:TFormClass);
+begin
+  if not Assigned(nomeTela) then begin
+    nomeTela := nomeTelaCompl.Create(nomeTela);
+  end;
+  nomeTela.Show;
 end;
 
 
