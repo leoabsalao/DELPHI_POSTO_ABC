@@ -18,6 +18,7 @@ type
     FDTrans: TFDTransaction;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     FDPhysFBDriverLink1: TFDPhysFBDriverLink;
+    FDConsultaOperacoes: TFDQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

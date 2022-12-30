@@ -36,4 +36,9 @@ object DMConex: TDMConex
     Left = 488
     Top = 112
   end
+  object FDConsultaOperacoes: TFDQuery
+    Connection = FDConex
+    Left = 489
+    Top = 178
+  end
 end

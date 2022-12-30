@@ -33,11 +33,25 @@ type
      property QuantLitros: real read GetQuantLitros write SetQuantLitros;
      property Valor: real read GetValor write SetValor;
 
+     procedure Salvar;
+     procedure ConsultaOperacoes;
   end;
 
 implementation
 
 { TAbastecimento }
+
+uses UDM, uUtilits, Winapi.Windows, Winapi.Messages, System.Variants,  Data.DB, Dialogs;
+
+procedure TAbastecimento.ConsultaOperacoes;
+begin
+  with DMConex.FDConsultaOperacoes do
+  begin
+     close;
+     SQL.Text := ' ';
+     ExecSQL;
+  end;
+end;
 
 function TAbastecimento.GetCodigo: integer;
 begin
@@ -62,6 +76,19 @@ end;
 function TAbastecimento.GetValor: real;
 begin
     Result := FValor;
+end;
+
+procedure TAbastecimento.Salvar;
+var
+  vLitros : string;
+begin
+  vLitros := StringReplace(FloatToStr(QuantLitros),',','.',[]);
+  with  DMConex.FDQuery do
+  begin
+     close;
+     SQL.Text := ' EXECUTE PROCEDURE SP_ABASTECIMENTO_INSERT('+FloatToStr(Cod_Bomba)+', '+vLitros+' ) ';
+     ExecSQL;
+  end;
 end;
 
 procedure TAbastecimento.SetCodigo(const value: integer);
