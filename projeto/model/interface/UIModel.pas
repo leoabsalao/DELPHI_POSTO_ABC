@@ -60,6 +60,7 @@ type
      procedure SetValor(const value: real);
      procedure Salvar;
      procedure ConsultaOperacoes;
+     procedure ConsultaOperacoesRelatorio;
 
      function GetCodigo: integer;
      function GetCod_Bomba: integer;

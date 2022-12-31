@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Dialogs,
-  FireDAC.Phys.FBDef, FireDAC.Phys.IBBase, FireDAC.Phys.FB, FireDAC.Comp.UI;
+  FireDAC.Phys.FBDef, FireDAC.Phys.IBBase, FireDAC.Phys.FB, FireDAC.Comp.UI,
+  Datasnap.DBClient;
 
 type
   TDMConex = class(TDataModule)
@@ -19,6 +20,13 @@ type
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     FDPhysFBDriverLink1: TFDPhysFBDriverLink;
     FDConsultaOperacoes: TFDQuery;
+    cdsRelatorio: TClientDataSet;
+    cdsRelatorioCODIGO: TIntegerField;
+    cdsRelatorioDATA: TDateField;
+    cdsRelatorioTANQUE: TStringField;
+    cdsRelatorioBOMBA: TStringField;
+    cdsRelatorioVALOR_TOTAL: TFloatField;
+    dsRelatorio: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -39,6 +47,8 @@ uses uUtilits;
 
 procedure TDMConex.DataModuleCreate(Sender: TObject);
 begin
+   cdsRelatorio.CreateDataSet;
+
    try
        with FDPhysFBDriverLink1 do
        begin

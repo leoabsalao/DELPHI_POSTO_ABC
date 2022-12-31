@@ -1,0 +1,33 @@
+unit URelOperacoes;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RLReport;
+
+type
+  TfRelatorioOperacoes = class(TForm)
+    rlr_abastecimentos: TRLReport;
+    rlb_cabecalho: TRLBand;
+    rlb_titulo: TRLBand;
+    rlb_colunas: TRLBand;
+    rlb_detalhe: TRLBand;
+    rlb_rodape: TRLBand;
+    RLSystemInfo1: TRLSystemInfo;
+    RLSystemInfo2: TRLSystemInfo;
+    RLLabel1: TRLLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fRelatorioOperacoes: TfRelatorioOperacoes;
+
+implementation
+
+{$R *.dfm}
+
+end.

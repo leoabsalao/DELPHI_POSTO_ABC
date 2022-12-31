@@ -1,5 +1,0 @@
-object DMConex: TDMConex
-  OldCreateOrder = False
-  Height = 451
-  Width = 657
-end

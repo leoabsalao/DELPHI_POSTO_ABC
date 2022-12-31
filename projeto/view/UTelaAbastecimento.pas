@@ -24,7 +24,7 @@ uses
   Winapi.Windows, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Datasnap.DBClient;
 
 type
   TfTelaAbastecimento = class(TForm)
@@ -51,6 +51,7 @@ type
     TabSheet1: TTabSheet;
     DBGrid1: TDBGrid;
     DsOperacoes: TDataSource;
+    btnRelatorio: TSpeedButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -63,7 +64,7 @@ type
     procedure edtQuantLitrosKeyPress(Sender: TObject; var Key: Char);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
-    procedure btnPesquisarClick(Sender: TObject);
+    procedure btnRelatorioClick(Sender: TObject);
   private
     { Private declarations }
     procedure apagarDadosAbastecimento;
@@ -83,7 +84,7 @@ implementation
 
 {$R *.dfm}
 
-uses UAbastecimento, UDM, UIModel, uUtilits;
+uses UAbastecimento, UDM, UIModel, uUtilits, URelOperacoes;
 
 procedure TfTelaAbastecimento.apagarDadosAbastecimento;
 begin
@@ -106,6 +107,12 @@ end;
 procedure TfTelaAbastecimento.btnRegistrarClick(Sender: TObject);
 begin
    SalvarAbastecimento;
+end;
+
+procedure TfTelaAbastecimento.btnRelatorioClick(Sender: TObject);
+begin
+  fRelatorioOperacoes := TfRelatorioOperacoes.Create(self);
+  fRelatorioOperacoes.rlr_abastecimentos.Preview();
 end;
 
 function TfTelaAbastecimento.calculoTotalAbastece(vPrecoCombustivel,

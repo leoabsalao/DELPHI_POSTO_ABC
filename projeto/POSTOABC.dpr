@@ -10,7 +10,8 @@ uses
   UBomba in 'model\UBomba.pas',
   UAbastecimento in 'model\UAbastecimento.pas',
   UIModel in 'model\interface\UIModel.pas',
-  UTelaAbastecimento in 'view\UTelaAbastecimento.pas' {fTelaAbastecimento};
+  UTelaAbastecimento in 'view\UTelaAbastecimento.pas' {fTelaAbastecimento},
+  URelOperacoes in 'relatorios\URelOperacoes.pas' {fRelatorioOperacoes};
 
 {$R *.res}
 
@@ -20,5 +21,6 @@ begin
   Application.Title := 'Posto ABC';
   Application.CreateForm(TDMConex, DMConex);
   Application.CreateForm(TfPrincipal, fPrincipal);
+  Application.CreateForm(TfRelatorioOperacoes, fRelatorioOperacoes);
   Application.Run;
 end.

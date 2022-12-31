@@ -208,7 +208,7 @@ object fTelaAbastecimento: TfTelaAbastecimento
           BevelOuter = bvNone
           TabOrder = 6
           object btnRegistrar: TSpeedButton
-            Left = 263
+            Left = -1
             Top = 1
             Width = 128
             Height = 37
@@ -217,12 +217,20 @@ object fTelaAbastecimento: TfTelaAbastecimento
             OnClick = btnRegistrarClick
           end
           object btnCancelar: TSpeedButton
-            Left = 395
+            Left = 131
             Top = 1
             Width = 128
             Height = 37
             Caption = 'Cancelar'
             OnClick = btnCancelarClick
+          end
+          object btnRelatorio: TSpeedButton
+            Left = 387
+            Top = 1
+            Width = 128
+            Height = 37
+            Caption = 'Imprimir Rel.'
+            OnClick = btnRelatorioClick
           end
         end
         object PageControl2: TPageControl
@@ -236,9 +244,10 @@ object fTelaAbastecimento: TfTelaAbastecimento
           object TabSheet1: TTabSheet
             Caption = 'Opera'#231#245'es realizadas'
             object DBGrid1: TDBGrid
-              Left = 0
-              Top = 3
-              Width = 821
+              AlignWithMargins = True
+              Left = 3
+              Top = 0
+              Width = 815
               Height = 317
               Align = alBottom
               DataSource = DsOperacoes
@@ -272,7 +281,7 @@ object fTelaAbastecimento: TfTelaAbastecimento
   end
   object DsOperacoes: TDataSource
     DataSet = DMConex.FDConsultaOperacoes
-    Left = 1177
-    Top = 402
+    Left = 825
+    Top = 386
   end
 end
