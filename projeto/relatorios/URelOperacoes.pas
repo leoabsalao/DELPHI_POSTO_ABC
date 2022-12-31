@@ -11,24 +11,25 @@ type
     rlr_abastecimentos: TRLReport;
     rlb_cabecalho: TRLBand;
     rlb_titulo: TRLBand;
-    rlb_colunas: TRLBand;
-    rlb_detalhe: TRLBand;
-    rlb_rodape: TRLBand;
     RLSystemInfo1: TRLSystemInfo;
     RLSystemInfo2: TRLSystemInfo;
     RLLabel1: TRLLabel;
     RLLabel2: TRLLabel;
+    rlr_group: TRLGroup;
+    RLBand1: TRLBand;
+    RLBand2: TRLBand;
+    RLBand3: TRLBand;
     RLLabel3: TRLLabel;
     RLLabel4: TRLLabel;
-    RLLabel5: TRLLabel;
+    RLDBText2: TRLDBText;
     RLLabel6: TRLLabel;
     RLLabel7: TRLLabel;
     RLDBText1: TRLDBText;
-    RLDBText2: TRLDBText;
-    RLDBText3: TRLDBText;
     RLDBText4: TRLDBText;
     RLDBText5: TRLDBText;
-    procedure rlr_abastecimentosAfterPrint(Sender: TObject);
+    RLDBResult1: TRLDBResult;
+    RLDBText3: TRLDBText;
+    RLLabel5: TRLLabel;
   private
     { Private declarations }
   public
@@ -43,14 +44,5 @@ implementation
 {$R *.dfm}
 
 uses UDM, UTelaAbastecimento, UAbastecimento, UIModel;
-
-procedure TfRelatorioOperacoes.rlr_abastecimentosAfterPrint(
-  Sender: TObject);
-var
-  clRelatorio: IAbastecimento;
-begin
-  clRelatorio := TAbastecimento.Create;
-  clRelatorio.ConsultaOperacoesRelatorio;
-end;
 
 end.

@@ -1,0 +1,141 @@
+unit UAbastecimento;
+
+interface
+
+uses Classes, SysUtils, UIModel, UDM, uUtilits, Winapi.Windows, Winapi.Messages, System.Variants, Data.DB, Dialogs, DateUtils;
+
+type
+
+  TAbastecimento = class(TInterfacedObject, IAbastecimento)
+  private
+     FCodigo: integer;
+     FCod_Bomba: integer;
+     FDataReg: TDateTime;
+     FQuantLitros: real;
+     FValor: real;
+
+     procedure SetCodigo(const value: integer);
+     procedure SetCod_Bomba(const value: integer);
+     procedure SetDataReg(const value: TDateTime);
+     procedure SetQuantLitros(const value: real);
+     procedure SetValor(const value: real);
+
+     function GetCodigo: integer;
+     function GetCod_Bomba: integer;
+     function GetDataReg: TDateTime;
+     function GetQuantLitros: real;
+     function GetValor: real;
+
+  public
+     property Codigo: integer read GetCodigo write SetCodigo;
+     property Cod_Bomba: integer read GetCod_Bomba write SetCod_Bomba;
+     property DataReg: TDateTime read GetDataReg write SetDataReg;
+     property QuantLitros: real read GetQuantLitros write SetQuantLitros;
+     property Valor: real read GetValor write SetValor;
+
+     procedure Salvar;
+     procedure ConsultaOperacoes;
+     procedure ConsultaOperacoesRelatorio;
+  end;
+
+implementation
+
+{ TAbastecimento }
+
+procedure TAbastecimento.ConsultaOperacoes;
+begin
+  with DMConex.FDConsultaOperacoes do
+  begin
+     close;
+     SQL.Text := '  SELECT a.CODIGO,a.DATA_REG AS DATA,t.DESCRICAO AS TANQUE, b.DESCRICAO AS BOMBA,CAST(a.VALOR AS NUMERIC(15,2)) AS VALOR_TOTAL '+
+                 '      FROM BOMBA b, TANQUE t, COMBUSTIVEL c, ABASTECIMENTO a                                                                    '+
+                 '    WHERE b.COD_TANQUE  = t.CODIGO AND t.COD_COMBUSTIVEL = c.CODIGO AND a.COD_BOMBA = b.CODIGO                                  '+
+                 '    ORDER BY a.CODIGO DESC                                                                                                      ';
+     Open;
+  end;
+end;
+
+procedure TAbastecimento.ConsultaOperacoesRelatorio;
+begin
+  with DMConex.FDConsultaRelatorio do
+  begin
+     close;
+     SQL.Text := '  SELECT a.DATA_REG AS DATA,                                          '+
+                 '         a.CODIGO AS CODIGO,                                          '+
+                 '         t.DESCRICAO AS TANQUE,                                       '+
+                 '         b.DESCRICAO AS BOMBA,                                        '+
+                 '         CAST(a.VALOR AS NUMERIC(15,2)) AS VALOR,                     '+
+                 '         CAST(SUM(a.VALOR) AS NUMERIC(15,2)) AS VALOR_TOTAL           '+
+                 '     FROM ABASTECIMENTO a, BOMBA b, TANQUE t                          '+
+                 '    WHERE a.COD_BOMBA = b.CODIGO AND t.CODIGO = b.COD_TANQUE          '+
+                 '    GROUP BY a.DATA_REG, a.CODIGO, b.DESCRICAO, t.DESCRICAO, a.VALOR  '+
+                 '    ORDER BY a.DATA_REG DESC                                          ';
+     Open;
+  end;
+end;
+
+function TAbastecimento.GetCodigo: integer;
+begin
+    Result := FCodigo;
+end;
+
+function TAbastecimento.GetCod_Bomba: integer;
+begin
+    Result := FCod_Bomba;
+end;
+
+function TAbastecimento.GetDataReg: TDateTime;
+begin
+    Result := FDataReg;
+end;
+
+function TAbastecimento.GetQuantLitros: real;
+begin
+    Result := FQuantLitros;
+end;
+
+function TAbastecimento.GetValor: real;
+begin
+    Result := FValor;
+end;
+
+procedure TAbastecimento.Salvar;
+var
+  vLitros : string;
+begin
+  vLitros := StringReplace(FloatToStr(QuantLitros),',','.',[]);
+  with  DMConex.FDQuery do
+  begin
+     close;
+     SQL.Text := ' EXECUTE PROCEDURE SP_ABASTECIMENTO_INSERT('+FloatToStr(Cod_Bomba)+', '+vLitros+' ) ';
+     ExecSQL;
+  end;
+  ConsultaOperacoes;
+end;
+
+procedure TAbastecimento.SetCodigo(const value: integer);
+begin
+   FCodigo := value;
+end;
+
+procedure TAbastecimento.SetCod_Bomba(const value: integer);
+begin
+    FCod_Bomba := value;
+end;
+
+procedure TAbastecimento.SetDataReg(const value: TDateTime);
+begin
+    FDataReg :=  value;
+end;
+
+procedure TAbastecimento.SetQuantLitros(const value: real);
+begin
+    FQuantLitros := value;
+end;
+
+procedure TAbastecimento.SetValor(const value: real);
+begin
+    FValor := value;
+end;
+
+end.

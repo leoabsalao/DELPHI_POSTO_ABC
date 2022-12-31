@@ -50,8 +50,8 @@ type
     PageControl2: TPageControl;
     TabSheet1: TTabSheet;
     DBGrid1: TDBGrid;
-    DsOperacoes: TDataSource;
     btnRelatorio: TSpeedButton;
+    DsOperacoes: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -110,7 +110,12 @@ begin
 end;
 
 procedure TfTelaAbastecimento.btnRelatorioClick(Sender: TObject);
+var
+  clRelatorio: IAbastecimento;
 begin
+  clRelatorio := TAbastecimento.Create;
+  clRelatorio.ConsultaOperacoesRelatorio;
+
   fRelatorioOperacoes := TfRelatorioOperacoes.Create(self);
   fRelatorioOperacoes.rlr_abastecimentos.Preview();
 end;

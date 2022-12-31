@@ -20,13 +20,14 @@ type
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     FDPhysFBDriverLink1: TFDPhysFBDriverLink;
     FDConsultaOperacoes: TFDQuery;
-    cdsRelatorio: TClientDataSet;
-    cdsRelatorioCODIGO: TIntegerField;
-    cdsRelatorioDATA: TDateField;
-    cdsRelatorioTANQUE: TStringField;
-    cdsRelatorioBOMBA: TStringField;
-    cdsRelatorioVALOR_TOTAL: TFloatField;
-    dsRelatorio: TDataSource;
+    DsConsulta: TDataSource;
+    FDConsultaRelatorio: TFDQuery;
+    FDConsultaRelatorioCODIGO: TIntegerField;
+    FDConsultaRelatorioTANQUE: TStringField;
+    FDConsultaRelatorioBOMBA: TStringField;
+    FDConsultaRelatorioDATA: TDateField;
+    FDConsultaRelatorioVALOR_TOTAL: TFloatField;
+    FDConsultaRelatorioVALOR: TFMTBCDField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -47,8 +48,6 @@ uses uUtilits;
 
 procedure TDMConex.DataModuleCreate(Sender: TObject);
 begin
-   cdsRelatorio.CreateDataSet;
-
    try
        with FDPhysFBDriverLink1 do
        begin

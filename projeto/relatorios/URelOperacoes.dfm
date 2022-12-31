@@ -18,12 +18,12 @@ object fRelatorioOperacoes: TfRelatorioOperacoes
     Top = 0
     Width = 794
     Height = 1123
+    DataSource = DMConex.DsConsulta
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
     Font.Name = 'Arial'
     Font.Style = []
-    AfterPrint = rlr_abastecimentosAfterPrint
     object rlb_cabecalho: TRLBand
       Left = 38
       Top = 38
@@ -87,175 +87,199 @@ object fRelatorioOperacoes: TfRelatorioOperacoes
         ParentFont = False
       end
     end
-    object rlb_colunas: TRLBand
+    object rlr_group: TRLGroup
       Left = 38
       Top = 125
       Width = 718
-      Height = 28
-      BandType = btColumnHeader
+      Height = 140
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
       Borders.DrawTop = False
       Borders.DrawRight = False
       Borders.DrawBottom = True
-      object RLLabel3: TRLLabel
-        Left = 7
-        Top = 9
-        Width = 87
-        Height = 15
-        Caption = 'Abastecimento'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsBold]
-        ParentFont = False
+      DataFields = 'DATA'
+      object RLBand1: TRLBand
+        Left = 0
+        Top = 0
+        Width = 718
+        Height = 52
+        BandType = btHeader
+        object RLLabel3: TRLLabel
+          Left = 15
+          Top = 33
+          Width = 94
+          Height = 17
+          Caption = 'C'#243'd. Opera'#231#227'o'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLLabel4: TRLLabel
+          Left = 15
+          Top = 6
+          Width = 44
+          Height = 17
+          Caption = 'DATA:'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLDBText2: TRLDBText
+          Left = 65
+          Top = 6
+          Width = 40
+          Height = 17
+          DataField = 'DATA'
+          DataSource = DMConex.DsConsulta
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Text = ''
+        end
+        object RLLabel6: TRLLabel
+          Left = 345
+          Top = 33
+          Width = 47
+          Height = 17
+          Caption = 'Bomba'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLLabel7: TRLLabel
+          Left = 553
+          Top = 33
+          Width = 66
+          Height = 17
+          Caption = 'Valor (R$)'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object RLLabel5: TRLLabel
+          Left = 182
+          Top = 33
+          Width = 50
+          Height = 17
+          Caption = 'Tanque'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
       end
-      object RLLabel4: TRLLabel
-        Left = 129
-        Top = 9
-        Width = 29
-        Height = 15
-        Caption = 'Data'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsBold]
-        ParentFont = False
+      object RLBand2: TRLBand
+        Left = 0
+        Top = 52
+        Width = 718
+        Height = 18
+        object RLDBText1: TRLDBText
+          Left = 33
+          Top = 0
+          Width = 54
+          Height = 17
+          Alignment = taCenter
+          DataField = 'CODIGO'
+          DataSource = DMConex.DsConsulta
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText4: TRLDBText
+          Left = 343
+          Top = 0
+          Width = 48
+          Height = 17
+          Alignment = taCenter
+          DataField = 'BOMBA'
+          DataSource = DMConex.DsConsulta
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText5: TRLDBText
+          Left = 563
+          Top = 0
+          Width = 44
+          Height = 17
+          Alignment = taCenter
+          DataField = 'VALOR'
+          DataSource = DMConex.DsConsulta
+          DisplayMask = 'R$ #,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBText3: TRLDBText
+          Left = 182
+          Top = 2
+          Width = 49
+          Height = 15
+          DataField = 'TANQUE'
+          DataSource = DMConex.DsConsulta
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+        end
       end
-      object RLLabel5: TRLLabel
-        Left = 218
-        Top = 9
-        Width = 44
-        Height = 15
-        Caption = 'Tanque'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsBold]
-        ParentFont = False
+      object RLBand3: TRLBand
+        Left = 0
+        Top = 70
+        Width = 718
+        Height = 40
+        BandType = btFooter
+        object RLDBResult1: TRLDBResult
+          Left = 465
+          Top = 20
+          Width = 136
+          Height = 17
+          Alignment = taCenter
+          DataField = 'VALOR_TOTAL'
+          DataSource = DMConex.DsConsulta
+          DisplayMask = 'R$ #,##0.00'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          Info = riSum
+          ParentFont = False
+          Text = ''
+        end
       end
-      object RLLabel6: TRLLabel
-        Left = 338
-        Top = 9
-        Width = 42
-        Height = 15
-        Caption = 'Bomba'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object RLLabel7: TRLLabel
-        Left = 576
-        Top = 9
-        Width = 87
-        Height = 15
-        Caption = 'Valor total (R$)'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-    end
-    object rlb_detalhe: TRLBand
-      Left = 38
-      Top = 153
-      Width = 718
-      Height = 24
-      Borders.Sides = sdCustom
-      Borders.DrawLeft = False
-      Borders.DrawTop = False
-      Borders.DrawRight = False
-      Borders.DrawBottom = True
-      object RLDBText1: TRLDBText
-        Left = 11
-        Top = 4
-        Width = 48
-        Height = 15
-        DataField = 'CODIGO'
-        DataSource = DMConex.dsRelatorio
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText2: TRLDBText
-        Left = 129
-        Top = 5
-        Width = 33
-        Height = 15
-        DataField = 'DATA'
-        DataSource = DMConex.dsRelatorio
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText3: TRLDBText
-        Left = 218
-        Top = 4
-        Width = 49
-        Height = 15
-        DataField = 'TANQUE'
-        DataSource = DMConex.dsRelatorio
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText4: TRLDBText
-        Left = 340
-        Top = 4
-        Width = 45
-        Height = 15
-        DataField = 'BOMBA'
-        DataSource = DMConex.dsRelatorio
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-      object RLDBText5: TRLDBText
-        Left = 576
-        Top = 5
-        Width = 80
-        Height = 15
-        DataField = 'VALOR_TOTAL'
-        DataSource = DMConex.dsRelatorio
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        Text = ''
-      end
-    end
-    object rlb_rodape: TRLBand
-      Left = 38
-      Top = 177
-      Width = 718
-      Height = 48
-      BandType = btColumnFooter
     end
   end
 end

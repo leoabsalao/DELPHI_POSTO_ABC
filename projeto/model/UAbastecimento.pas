@@ -47,7 +47,7 @@ begin
   with DMConex.FDConsultaOperacoes do
   begin
      close;
-     SQL.Text := '  SELECT a.CODIGO,a.DATA_REG AS DATA,t.DESCRICAO AS TANQQUE, b.DESCRICAO AS BOMBA,CAST(a.VALOR AS NUMERIC(15,2)) AS VALOR_TOTAL '+
+     SQL.Text := '  SELECT a.CODIGO,a.DATA_REG AS DATA,t.DESCRICAO AS TANQUE, b.DESCRICAO AS BOMBA,CAST(a.VALOR AS NUMERIC(15,2)) AS VALOR_TOTAL '+
                  '      FROM BOMBA b, TANQUE t, COMBUSTIVEL c, ABASTECIMENTO a                                                                    '+
                  '    WHERE b.COD_TANQUE  = t.CODIGO AND t.COD_COMBUSTIVEL = c.CODIGO AND a.COD_BOMBA = b.CODIGO                                  '+
                  '    ORDER BY a.CODIGO DESC                                                                                                      ';
@@ -57,29 +57,20 @@ end;
 
 procedure TAbastecimento.ConsultaOperacoesRelatorio;
 begin
-  with DMConex.FDConsultaOperacoes do
+  with DMConex.FDConsultaRelatorio do
   begin
      close;
-     SQL.Text := '  SELECT a.CODIGO, a.DATA_REG AS DATA,t.DESCRICAO AS TANQQUE, b.DESCRICAO AS BOMBA,CAST(a.VALOR AS NUMERIC(15,2)) AS VALOR_TOTAL '+
-                 '      FROM BOMBA b, TANQUE t, COMBUSTIVEL c, ABASTECIMENTO a                                                                    '+
-                 '    WHERE b.COD_TANQUE  = t.CODIGO AND t.COD_COMBUSTIVEL = c.CODIGO AND a.COD_BOMBA = b.CODIGO                                  '+
-                 '    ORDER BY a.CODIGO DESC                                                                                                      ';
+     SQL.Text := '  SELECT a.DATA_REG AS DATA,                                          '+
+                 '         a.CODIGO AS CODIGO,                                          '+
+                 '         t.DESCRICAO AS TANQUE,                                       '+
+                 '         b.DESCRICAO AS BOMBA,                                        '+
+                 '         CAST(a.VALOR AS NUMERIC(15,2)) AS VALOR,                     '+
+                 '         SUM(a.VALOR) AS VALOR_TOTAL                                  '+
+                 '     FROM ABASTECIMENTO a, BOMBA b, TANQUE t                          '+
+                 '    WHERE a.COD_BOMBA = b.CODIGO AND t.CODIGO = b.COD_TANQUE          '+
+                 '    GROUP BY a.DATA_REG, a.CODIGO, b.DESCRICAO, t.DESCRICAO, a.VALOR  '+
+                 '    ORDER BY a.DATA_REG DESC                                          ';
      Open;
-     while not eof do
-     begin
-       with DMConex.cdsRelatorio do
-       begin
-          Append;
-        //  FieldByName('CODIGO').AsInteger := ParamByName('CODIGO').AsInteger;
-          Params[0].Value := ParamByName('CODIGO').AsInteger;
-  //        FieldByName('DATA').AsDateTime := ParamByName('DATA').AsDateTime;
-    //      FieldByName('TANQQUE').AsString := ParamByName('DATA').AsString;
-      //    FieldByName('BOMBA').AsString := ParamByName('BOMBA').AsString;
-        //  FieldByName('VALOR_TOTAL').AsFloat := ParamByName('VALOR_TOTAL').AsFloat;
-          Post;
-       end;
-       Next;
-     end;
   end;
 end;
 

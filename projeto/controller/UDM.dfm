@@ -41,37 +41,37 @@ object DMConex: TDMConex
     Left = 489
     Top = 178
   end
-  object cdsRelatorio: TClientDataSet
-    Aggregates = <>
-    Params = <
-      item
-        DataType = ftString
-        Name = 'CODIGO'
-        ParamType = ptInput
-      end>
-    Left = 385
-    Top = 314
-    object cdsRelatorioCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-    end
-    object cdsRelatorioDATA: TDateField
+  object DsConsulta: TDataSource
+    DataSet = FDConsultaRelatorio
+    Left = 400
+    Top = 328
+  end
+  object FDConsultaRelatorio: TFDQuery
+    Connection = FDConex
+    SQL.Strings = (
+      '')
+    Left = 504
+    Top = 328
+    object FDConsultaRelatorioDATA: TDateField
       FieldName = 'DATA'
     end
-    object cdsRelatorioTANQUE: TStringField
+    object FDConsultaRelatorioCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+    end
+    object FDConsultaRelatorioTANQUE: TStringField
       FieldName = 'TANQUE'
       Size = 50
     end
-    object cdsRelatorioBOMBA: TStringField
+    object FDConsultaRelatorioBOMBA: TStringField
       FieldName = 'BOMBA'
       Size = 50
     end
-    object cdsRelatorioVALOR_TOTAL: TFloatField
+    object FDConsultaRelatorioVALOR: TFMTBCDField
+      FieldName = 'VALOR'
+      Size = 10
+    end
+    object FDConsultaRelatorioVALOR_TOTAL: TFloatField
       FieldName = 'VALOR_TOTAL'
     end
-  end
-  object dsRelatorio: TDataSource
-    DataSet = cdsRelatorio
-    Left = 489
-    Top = 306
   end
 end

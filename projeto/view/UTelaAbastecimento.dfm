@@ -214,6 +214,12 @@ object fTelaAbastecimento: TfTelaAbastecimento
             Height = 37
             Caption = 'Registrar'
             Enabled = False
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Reference Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
             OnClick = btnRegistrarClick
           end
           object btnCancelar: TSpeedButton
@@ -222,6 +228,12 @@ object fTelaAbastecimento: TfTelaAbastecimento
             Width = 128
             Height = 37
             Caption = 'Cancelar'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Reference Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
             OnClick = btnCancelarClick
           end
           object btnRelatorio: TSpeedButton
@@ -230,6 +242,12 @@ object fTelaAbastecimento: TfTelaAbastecimento
             Width = 128
             Height = 37
             Caption = 'Imprimir Rel.'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'MS Reference Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
             OnClick = btnRelatorioClick
           end
         end
@@ -256,7 +274,7 @@ object fTelaAbastecimento: TfTelaAbastecimento
               GradientStartColor = clActiveCaption
               Font.Charset = ANSI_CHARSET
               Font.Color = clWindowText
-              Font.Height = -12
+              Font.Height = -13
               Font.Name = 'MS Reference Sans Serif'
               Font.Style = []
               ParentFont = False
@@ -281,7 +299,7 @@ object fTelaAbastecimento: TfTelaAbastecimento
   end
   object DsOperacoes: TDataSource
     DataSet = DMConex.FDConsultaOperacoes
-    Left = 825
+    Left = 785
     Top = 386
   end
 end
