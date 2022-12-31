@@ -50,11 +50,6 @@ type
     PageControl2: TPageControl;
     TabSheet1: TTabSheet;
     DBGrid1: TDBGrid;
-    DateTimePicker1: TDateTimePicker;
-    DateTimePicker2: TDateTimePicker;
-    Label3: TLabel;
-    Label4: TLabel;
-    btnPesquisar: TButton;
     DsOperacoes: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
@@ -66,6 +61,9 @@ type
       Shift: TShiftState);
     procedure btnRegistrarClick(Sender: TObject);
     procedure edtQuantLitrosKeyPress(Sender: TObject; var Key: Char);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure btnPesquisarClick(Sender: TObject);
   private
     { Private declarations }
     procedure apagarDadosAbastecimento;
@@ -74,6 +72,7 @@ type
     procedure consultaBomba(codigoBomba: string);
     procedure salvarAbastecimento;
     procedure habilitaBotaoRegistrar(flag : boolean);
+    procedure consultaOperacoesTelaAbastecimento;
     function calculoTotalAbastece(vPrecoCombustivel:string; vImposto: string; vQuantLitros:string):string;
   end;
 
@@ -154,6 +153,27 @@ begin
   end;
 end;
 
+procedure TfTelaAbastecimento.consultaOperacoesTelaAbastecimento;
+var
+  clOperacoes: IAbastecimento;
+begin
+  clOperacoes := TAbastecimento.Create;
+  clOperacoes.ConsultaOperacoes;
+end;
+
+procedure TfTelaAbastecimento.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn;
+  State: TGridDrawState);
+begin
+  if not odd(DMConex.FDConsultaOperacoes.RecNo) then
+      if not (gdSelected in State) then
+      begin
+          DBGrid1.Canvas.Brush.Color := clGradientInactiveCaption;
+          DBGrid1.Canvas.FillRect(Rect);
+          DBGrid1.DefaultDrawDataCell(rect,Column.Field,state);
+      end;
+end;
+
 procedure TfTelaAbastecimento.edtQuantLitrosKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
@@ -188,6 +208,7 @@ end;
 procedure TfTelaAbastecimento.FormShow(Sender: TObject);
 begin
   apagarDadosAbastecimento;
+  consultaOperacoesTelaAbastecimento;
 end;
 
 procedure TfTelaAbastecimento.habilitaBotaoRegistrar(flag: boolean);
@@ -197,7 +218,7 @@ end;
 
 procedure TfTelaAbastecimento.salvarAbastecimento;
 var
-  clAbastecimento : IAbastecimento;
+  clAbastecimento: IAbastecimento;
 begin
   clAbastecimento := TAbastecimento.Create;
 

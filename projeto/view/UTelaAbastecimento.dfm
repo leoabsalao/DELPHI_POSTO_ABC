@@ -29,7 +29,6 @@ object fTelaAbastecimento: TfTelaAbastecimento
     Color = clActiveCaption
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 697
     object Label1: TLabel
       Left = 1
       Top = 1
@@ -59,8 +58,6 @@ object fTelaAbastecimento: TfTelaAbastecimento
     Align = alClient
     BevelOuter = bvLowered
     TabOrder = 1
-    ExplicitWidth = 697
-    ExplicitHeight = 431
     object PageControl1: TPageControl
       Left = 1
       Top = 1
@@ -69,9 +66,11 @@ object fTelaAbastecimento: TfTelaAbastecimento
       ActivePage = TabOperacao
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 485
       object TabOperacao: TTabSheet
         Caption = 'Opera'#231#227'o'
+        DesignSize = (
+          1440
+          397)
         object Label2: TLabel
           Left = 61
           Top = 26
@@ -112,8 +111,8 @@ object fTelaAbastecimento: TfTelaAbastecimento
         object lblValorTotal: TLabel
           Left = 349
           Top = 272
-          Width = 242
-          Height = 41
+          Width = 127
+          Height = 35
           Caption = 'R$ 0,00'
           Font.Charset = ANSI_CHARSET
           Font.Color = clRed
@@ -232,62 +231,34 @@ object fTelaAbastecimento: TfTelaAbastecimento
           Width = 829
           Height = 351
           ActivePage = TabSheet1
+          Anchors = [akLeft, akTop, akRight]
           TabOrder = 7
           object TabSheet1: TTabSheet
             Caption = 'Opera'#231#245'es realizadas'
-            object Label3: TLabel
-              Left = 288
-              Top = 12
-              Width = 25
-              Height = 16
-              Caption = 'De:'
-            end
-            object Label4: TLabel
-              Left = 483
-              Top = 12
-              Width = 30
-              Height = 16
-              Caption = 'At'#233':'
-            end
             object DBGrid1: TDBGrid
               Left = 0
-              Top = 34
+              Top = 3
               Width = 821
-              Height = 286
+              Height = 317
               Align = alBottom
               DataSource = DsOperacoes
+              DrawingStyle = gdsGradient
+              GradientEndColor = clWhite
+              GradientStartColor = clActiveCaption
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -12
+              Font.Name = 'MS Reference Sans Serif'
+              Font.Style = []
+              ParentFont = False
+              ReadOnly = True
               TabOrder = 0
               TitleFont.Charset = ANSI_CHARSET
               TitleFont.Color = clWindowText
               TitleFont.Height = -12
               TitleFont.Name = 'MS Reference Sans Serif'
               TitleFont.Style = [fsBold]
-            end
-            object DateTimePicker1: TDateTimePicker
-              Left = 316
-              Top = 4
-              Width = 153
-              Height = 24
-              Date = 44925.000000000000000000
-              Time = 0.445754305554146400
-              TabOrder = 1
-            end
-            object DateTimePicker2: TDateTimePicker
-              Left = 519
-              Top = 4
-              Width = 157
-              Height = 24
-              Date = 44925.000000000000000000
-              Time = 0.446324710646877100
-              TabOrder = 2
-            end
-            object btnPesquisar: TButton
-              Left = 683
-              Top = 2
-              Width = 137
-              Height = 27
-              Caption = 'Pesquisar'
-              TabOrder = 3
+              OnDrawColumnCell = DBGrid1DrawColumnCell
             end
           end
         end

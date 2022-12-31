@@ -59,6 +59,7 @@ type
      procedure SetQuantLitros(const value: real);
      procedure SetValor(const value: real);
      procedure Salvar;
+     procedure ConsultaOperacoes;
 
      function GetCodigo: integer;
      function GetCod_Bomba: integer;
@@ -75,6 +76,6 @@ type
 
 implementation
 
-uses UDM;
+uses UDM, Data.DB, DateUtils;
 
 end.

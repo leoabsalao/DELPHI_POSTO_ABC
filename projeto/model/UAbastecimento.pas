@@ -2,7 +2,7 @@ unit UAbastecimento;
 
 interface
 
-uses Classes, SysUtils, UIModel;
+uses Classes, SysUtils, UIModel, UDM, uUtilits, Winapi.Windows, Winapi.Messages, System.Variants, Data.DB, Dialogs, DateUtils;
 
 type
 
@@ -41,15 +41,16 @@ implementation
 
 { TAbastecimento }
 
-uses UDM, uUtilits, Winapi.Windows, Winapi.Messages, System.Variants,  Data.DB, Dialogs;
-
 procedure TAbastecimento.ConsultaOperacoes;
 begin
   with DMConex.FDConsultaOperacoes do
   begin
      close;
-     SQL.Text := ' ';
-     ExecSQL;
+     SQL.Text := '  SELECT a.CODIGO,a.DATA_REG AS DATA,t.DESCRICAO AS TANQQUE, b.DESCRICAO AS BOMBA,CAST(a.VALOR AS NUMERIC(15,2)) AS VALOR_TOTAL '+
+                 '      FROM BOMBA b, TANQUE t, COMBUSTIVEL c, ABASTECIMENTO a                                                                    '+
+                 '    WHERE b.COD_TANQUE  = t.CODIGO AND t.COD_COMBUSTIVEL = c.CODIGO AND a.COD_BOMBA = b.CODIGO                                  '+
+                 '    ORDER BY a.CODIGO DESC                                                                                                      ';
+     Open;
   end;
 end;
 
@@ -89,6 +90,7 @@ begin
      SQL.Text := ' EXECUTE PROCEDURE SP_ABASTECIMENTO_INSERT('+FloatToStr(Cod_Bomba)+', '+vLitros+' ) ';
      ExecSQL;
   end;
+  ConsultaOperacoes;
 end;
 
 procedure TAbastecimento.SetCodigo(const value: integer);
